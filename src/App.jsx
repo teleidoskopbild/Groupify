@@ -1,10 +1,15 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import StartPage from "./pages/StartPage";
+import MainPage from "./pages/MainPage";
+
 function App() {
   return (
-    <>
-      <div>
-        <h1 className="bg-blue-500">Groupify</h1>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/main" element={<MainPage />} />
+      </Routes>
+    </Router>
   );
 }
 
