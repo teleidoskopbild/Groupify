@@ -205,7 +205,7 @@ export default function MainPage() {
           <div className="flex flex-wrap justify-center">
             {assignedItems.map((groupData) => (
               <div
-                className="w-1/3 bg-gray-100 p-4 rounded-lg m-4"
+                className="w-1/3 bg-green-300 p-4 rounded-lg m-4"
                 key={groupData.group.id}
               >
                 <h3 className="font-semibold mb-2">
@@ -213,7 +213,7 @@ export default function MainPage() {
                 </h3>
                 <ul className="space-y-2">
                   {groupData.items.map((item) => (
-                    <li className="bg-gray-300 p-2 " key={item.id}>
+                    <li className="bg-blue-300 p-2 " key={item.id}>
                       {item.name}
                     </li>
                   ))}
