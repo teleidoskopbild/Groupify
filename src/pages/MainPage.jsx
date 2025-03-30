@@ -92,27 +92,45 @@ export default function MainPage() {
   };
 
   return (
-    <div className="h-screen p-4">
-      <h1 className="m-2 text-xl">MainPage</h1>
-      <div className="flex gap-2">
-        <button onClick={loadMockData} className="border-2 p-1 rounded-lg">
+    <div className="min-h-screen bg-blue-100 flex flex-col">
+      <div className="flex justify-start items-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2 ml-4">GROUPIFY</h1>
+        <p className="text-md text-gray-500 ml-4">
+          A tool to easily organize items and assign them to groups.
+        </p>
+      </div>
+      <div className="ml-4 flex gap-2">
+        <button
+          onClick={loadMockData}
+          className="border-3 border-transparent p-2 rounded-lg cursor-pointer bg-green-400 hover:border-green-500"
+        >
           Example Data
         </button>
-        <button onClick={deleteData} className="border-2 p-1 rounded-lg">
+        <button
+          onClick={deleteData}
+          className="border-3 border-transparent p-2 rounded-lg cursor-pointer bg-green-400 hover:border-green-500"
+        >
           Delete Data
+        </button>
+
+        <button
+          onClick={assignItemsToGroups}
+          className="border-3 p-2 border-transparent rounded-lg cursor-pointer bg-green-400 hover:border-green-500"
+        >
+          Randomly Assign
         </button>
       </div>
 
-      <div className="flex">
+      <div className="flex ml-4">
         <div className="flex flex-col">
           {/* ITEMS */}
           <div>
             <h2>Items</h2>
-            <div className="bg-green-200 p-4 w-8/9 border-2 rounded-lg h-[250px] overflow-y-scroll">
+            <div className="bg-green-300 p-4 w-full border-0 rounded-lg h-[240px] overflow-y-scroll custom-scrollbar">
               <ul>
                 {items.map((item) => (
                   <li
-                    className="m-2 ml-2 p-1 bg-blue-300 flex justify-between"
+                    className="m-2 ml-2 p-1 bg-blue-300 flex justify-between hover:scale-105 transition-all rounded"
                     key={item.id}
                   >
                     {item.name}
@@ -125,26 +143,31 @@ export default function MainPage() {
                   </li>
                 ))}
               </ul>
-            </div>{" "}
-            <div>
+            </div>
+            <div className="mt-2 mb-4 bg-green-300 border-0 rounded-lg flex flex items-center p-2 space-x-2">
               <input
                 type="text"
                 value={inputItems}
                 onChange={(e) => setInputItems(e.target.value)}
                 placeholder="Enter an item"
-                className="border-2 m-4"
+                className="border-0 p-2 flex-1 rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
               />
-              <button onClick={addItem}>Add Item</button>
+              <button
+                onClick={addItem}
+                className=" px-4 py-2 bg-green-500 text-white rounded font-bold cursor-pointer hover:scale-110"
+              >
+                +
+              </button>
             </div>
           </div>
           {/* GROUPS */}
           <div>
             <h2>Groups</h2>
-            <div className="bg-green-300 p-4 w-8/9 border-2 rounded-lg h-[250px] overflow-y-scroll">
+            <div className="bg-green-300 p-4 w-full  border-0 rounded-lg h-[240px] overflow-y-scroll custom-scrollbar">
               <ul>
                 {groups.map((group) => (
                   <li
-                    className="m-2 ml-2 p-1 bg-red-200 flex justify-between"
+                    className="m-2 ml-2 p-1 bg-blue-300 flex justify-between hover:scale-105 transition-all rounded"
                     key={group.id}
                   >
                     {group.name}
@@ -158,23 +181,27 @@ export default function MainPage() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="mt-2 mb-4 bg-green-300 border-0 rounded-lg flex flex items-center p-2 space-x-2">
               <input
                 type="text"
                 value={inputGroups}
                 onChange={(e) => setInputGroups(e.target.value)}
                 placeholder="Enter a group"
-                className="border-2 m-4"
+                className="border-0 p-2 flex-1 rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
               />
-              <button onClick={addGroup}>Add Group</button>
-            </div>
-            <div>
-              <button onClick={assignItemsToGroups}>Randomly Assign</button>
+              <button
+                onClick={addGroup}
+                className="px-4 py-2 bg-green-500 text-white rounded font-bold cursor-pointer hover:scale-110"
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
-        <div className="w-3/4">
-          <h2>Assigned Items</h2>
+        <div className="w-3/4 text-center">
+          {assignedItems.length > 0 && (
+            <h2 className="text-xl">Assigned Items</h2>
+          )}
           <div className="flex flex-wrap justify-center">
             {assignedItems.map((groupData) => (
               <div

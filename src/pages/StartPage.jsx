@@ -1,7 +1,5 @@
+import { Navigate } from "react-router-dom";
+
 export default function StartPage() {
-  return (
-    <div>
-      <h1>StartPage</h1>
-    </div>
-  );
+  return <Navigate to="/main"></Navigate>;
 }
