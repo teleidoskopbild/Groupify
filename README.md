@@ -6,4 +6,4 @@ Groupify is a simple web app that allows you to create lists of items and random
 - Create and manage items  
 - Define groups for assignment  
 - Randomly distribute items across groups  
-- Set item priorities to influence group assignments  
+- Set item priorities to influence group assignments (not implemented yet)  
